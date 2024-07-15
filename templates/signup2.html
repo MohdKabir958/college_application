@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/static/signup_style.css">
+</head>
+
+<body>
+    <div class="main">
+        <!-- <h1>BCA PORTAL</h1> -->
+        <div class="main2">
+
+            <div class="rhombus"></div>
+
+            <span id="element"></span>
+            <div class="logo">
+                <img src="/static/images_folder/pragnya.jpg" alt="image of logo">
+            </div>
+            <form class="form form_main">
+                <p class="title">Signup</p>
+                <p class="message">Signup now and get full access to our PORTAL </p>
+                <div class="flex">
+                    <label>
+                        <input required="" placeholder="" type="text" class="input">
+                        <span>Firstname</span>
+                    </label>
+
+                    <label>
+                        <input required="" placeholder="" type="text" class="input">
+                        <span>Lastname</span>
+                    </label>
+                </div>
+
+                <label>
+                    <input required="" placeholder="" type="email" class="input">
+                    <span>Email</span>
+                </label>
+
+                <label>
+                    <input required="" placeholder="" type="password" class="input">
+                    <span>Password</span>
+                </label>
+                <label>
+                    <input required="" placeholder="" type="password" class="input">
+                    <span>Confirm password</span>
+                </label>
+                <button class="submit">Submit</button>
+                <p class="signin">Already have an acount ? <a href="login2.html">Login</a> </p>
+            </form>
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+        var typed = new
+            Typed('#element', {
+                strings: ['BCA PORTAL'],
+                typeSpeed: 50, Loop: 50,
+            });
+    </script>
+</body>
+
+</html>
