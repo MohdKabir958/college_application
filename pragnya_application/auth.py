@@ -16,22 +16,18 @@ def signup():
         email = request.form['email']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
-
-        if password != confirm_password:
+        hashed_password = generate_password_hash(password=password, method='pbkdf2:sha256')
+        
+        if password != confirm_password: 
             flash("Passwords does'nt match")
             return render_template('signup.html', error='Passwords do not match')
-
-        hashed_password = generate_password_hash(password=password, method='pbkdf2:sha256')
-       
-        from . model import User
         
-
+        from . model import User
         existing_user = User.query.filter_by(email=email).first()
         if existing_user:
             flash("User with {} already exists! ".format(email))
             return render_template('signup.html')
         new_user = User(name=name, email=email, password=hashed_password)
-        print(new_user)
         
         from .import db
         db.session.add(new_user)
