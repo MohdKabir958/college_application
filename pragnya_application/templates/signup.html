@@ -1,54 +1,67 @@
 {% extends "base.html" %}
 
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='signup_style.css') }}">
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='signup_style.css') }}">
 {% endblock %}
 
 {% block content %}
-    <div class="main">
-        <div class="main2">
-            <div class="rhombus"></div>
-            <span id="element"></span>
-            <div class="logo">
-                <img src="{{ url_for('static', filename='images_folder/pragnya.jpg') }}" alt="image of logo">
-            </div>
-            <form action="{{ url_for('auth.signup') }}" class="form form_main" method="POST">
-                <p class="title">Signup</p>
-                <p class="message">Signup now and get full access to our PORTAL</p>
-                <div class="flex">
-                    <label>
-                        <input required id="fname" name="fname" placeholder="" type="text" class="input">
-                        <span>Firstname</span>
-                    </label>
-                    <label>
-                        <input required id="lname" name="lname" placeholder="" type="text" class="input">
-                        <span>Lastname</span>
-                    </label>
-                </div>
-                <label>
-                    <input required placeholder="" id="email" name="email" type="email" class="input">
-                    <span>Email</span>
-                </label>
-                <label>
-                    <input required placeholder="" id="password" name="password" type="password" class="input">
-                    <span>Password</span>
-                </label>
-                <label>
-                    <input required placeholder="" id="confirm_password" name="confirm_password" type="password" class="input">
-                    <span>Confirm password</span>
-                </label>
-                <button type="submit" class="submit">Submit</button>
-                <p class="signin">Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
-            </form>
+<div class="main">
+    <div class="main2">
+        <div class="rhombus"></div>
+        <span id="element"></span>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images_folder/pragnya.jpg') }}" alt="image of logo">
         </div>
+        <form action="{{ url_for('auth.signup') }}" class="form form_main" method="POST">
+            <p class="title">Signup</p>
+            <p class="message">Signup now and get full access to our PORTAL</p>
+            <div class="flashes">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <h2 style="color: red;">{{ message }}</h2>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="flex">
+                <label>
+                    <input required id="fname" name="fname" placeholder="" type="text" class="input">
+                    <span>Firstname</span>
+                </label>
+                <label>
+                    <input required id="lname" name="lname" placeholder="" type="text" class="input">
+                    <span>Lastname</span>
+                </label>
+            </div>
+            <label>
+                <input required placeholder="" id="email" name="email" type="email" class="input">
+                <span>Email</span>
+            </label>
+            <label>
+                <input required placeholder="" id="password" name="password" type="password" class="input">
+                <span>Password</span>
+            </label>
+            <label>
+                <input required placeholder="" id="confirm_password" name="confirm_password" type="password"
+                    class="input">
+                <span>Confirm password</span>
+            </label>
+            <button type="submit" class="submit">Submit</button>
+            <p class="signin">Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
+        </form>
     </div>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script>
-        var typed = new Typed('#element', {
-            strings: ['STUDENT PORTAL'],
-            typeSpeed: 50,
-            loop: true,
-        });
-    </script>
+</div>
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script>
+    var typed = new Typed('#element', {
+        strings: ['STUDENT PORTAL'],
+        typeSpeed: 50,
+        loop: true,
+    });
+</script>
 {% endblock %}
